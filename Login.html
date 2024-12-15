@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в аккаунт</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .login-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .login-container input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container a {
+      color: #c0392b;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .login-container button {
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #880015;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Вход</h2>
+    <input type="text" id="login" placeholder="Логин">
+    <input type="password" id="password" placeholder="Пароль">
+    <a href="Registr.html">Регистрация</a>
+    <div class="error" id="error"></div>
+    <button onclick="login()">Войти</button>
+  </div>
+
+  <script>
+    function login() {
+      const login = document.getElementById('login').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Получение списка аккаунтов из LocalStorage
+      const accounts = JSON.parse(localStorage.getItem('accounts')) || {};
+
+      // Проверка существования логина и соответствия пароля
+      if (accounts[login] && accounts[login] === password) {
+        alert('Вход выполнен успешно!');
+        window.location.href = 'Glav.html'; // Переход на главную страницу
+      } else {
+        document.getElementById('error').textContent = 'Неверный логин или пароль';
+      }
+    }
+  </script>
+</body>
+</html>
