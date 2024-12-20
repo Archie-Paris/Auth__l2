@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вход в аккаунт</title>
   <style>
     body {
@@ -54,6 +51,7 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+margin-top: 5px;
     }
 
     .login-container button:hover {
@@ -75,24 +73,28 @@
     <a href="Registr.html">Регистрация</a>
     <div class="error" id="error"></div>
     <button onclick="login()">Войти</button>
+<button onclick="goToMain()">На главную</button>
+
   </div>
 
   <script>
     function login() {
       const login = document.getElementById('login').value.trim();
       const password = document.getElementById('password').value;
-
-      // Получение списка аккаунтов из LocalStorage
       const accounts = JSON.parse(localStorage.getItem('accounts')) || {};
 
-      // Проверка существования логина и соответствия пароля
       if (accounts[login] && accounts[login] === password) {
+localStorage.setItem('loggedUser', login);
         alert('Вход выполнен успешно!');
-        window.location.href = 'Glav.html'; // Переход на главную страницу
+        window.location.href = 'Index.html'; // Переход на главную страницу
       } else {
         document.getElementById('error').textContent = 'Неверный логин или пароль';
       }
     }
+function goToMain() {
+  window.location.href = 'Index.html';
+}
+
   </script>
 </body>
 </html>

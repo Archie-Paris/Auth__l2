@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="ru">
+
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Регистрация</title>
   <style>
     body {
@@ -46,6 +44,7 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+margin-top: 5px;
     }
 
     .register-container button:hover {
@@ -60,42 +59,45 @@
     <input type="password" id="newPassword" placeholder="Пароль">
     <input type="password" id="confirmPassword" placeholder="Подтвердите пароль">
     <button onclick="register()">Зарегистрироваться</button>
+<button onclick="goToMain()">На главную</button>
   </div>
 
   <script>
-    function register() {
-      const login = document.getElementById('newLogin').value.trim();
-      const password = document.getElementById('newPassword').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
+function register() {
+  const login = document.getElementById('newLogin').value.trim();
+  const password = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
 
-      // Проверка на заполненность полей
-      if (!login || !password || !confirmPassword) {
-        alert('Пожалуйста, заполните все поля.');
-        return;
-      }
+  if (!login || !password || !confirmPassword) {
+    alert('Пожалуйста, заполните все поля.');
+    return;
+  }
 
-      // Проверка совпадения паролей
-      if (password !== confirmPassword) {
-        alert('Пароли не совпадают');
-        return;
-      }
+  if (password !== confirmPassword) {
+    alert('Пароли не совпадают');
+    return;
+  }
 
-      // Получение существующих аккаунтов из LocalStorage
-      let accounts = JSON.parse(localStorage.getItem('accounts')) || {};
+  let accounts = JSON.parse(localStorage.getItem('accounts')) || {};
 
-      // Проверка, существует ли уже аккаунт с таким логином
-      if (accounts[login]) {
-        alert('Аккаунт с таким логином уже существует!');
-        return;
-      }
+  if (accounts[login]) {
+    alert('Аккаунт с таким логином уже существует!');
+    return;
+  }
 
-      // Сохранение нового аккаунта
-      accounts[login] = password;
-      localStorage.setItem('accounts', JSON.stringify(accounts));
+  const registrationTime = new Date().toLocaleString();
 
-      alert('Регистрация успешна! Вы будете перенаправлены на главную страницу.');
-      window.location.href = 'Glav.html'; // Переход на главную страницу
-    }
+  accounts[login] = { password: password, registrationTime: registrationTime };
+  localStorage.setItem('accounts', JSON.stringify(accounts));
+localStorage.setItem('loggedUser', login);
+
+  alert('Регистрация успешна! Вы будете перенаправлены на главную страницу.');
+  window.location.href = 'Index.html';
+}
+function goToMain() {
+  window.location.href = 'Index.html';
+}
+
   </script>
 </body>
 </html>
