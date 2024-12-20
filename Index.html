@@ -1,0 +1,296 @@
+<html>
+<head>
+  <title>Славия - Производство кондитерских изделий</title>
+  <style>
+    #container {
+      width: 931px;
+      height: 1000px;
+      position: relative;
+      background-color: white;
+      overflow: hidden;
+      left: 480px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(i.webp);
+      color: #333;
+    }
+
+    header {
+      background-color: #ffe6e1;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    header h1 {
+      color: #c0392b;
+      font-size: 36px;
+      margin: 0;
+    }
+
+    header p {
+      color: black;
+      margin: 10px 0 0;
+    }
+
+    h3 {
+      margin-left: 20px;
+      color: #c0392b;
+    }
+
+    p {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .login-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .login-icon a {
+      color: #c0392b;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .login-icon a:hover {
+      color: #880015;
+    }
+
+    .login-icon img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .login-icon img:hover {
+      transform: scale(1.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    }
+
+    nav a {
+      color: #c0392b;
+      text-decoration: none;
+      padding: 5px 10px 12px;
+      display: inline-block;
+      font-size: 15px;
+      height: 12px;
+      transition: all 0.3s ease;
+
+
+    }
+
+    nav a:hover {
+      color: white;
+      background-color: #880015;
+      border-radius: 10px;
+      transform: scale(1.1);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .footer {
+      background-color: #ffe6e1;
+      text-align: center;
+      padding: 20px;
+      height: 40px;
+    }
+
+    .footer p {
+      color: black;
+      margin: 0;
+    }
+    .carousel {
+      position: relative;
+      max-width: 700px;
+      margin: auto;
+      overflow: hidden;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-images img {
+      width: 33.33%;
+      flex-shrink: 0;
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-buttons button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .indicators button {
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      background-color: #ccc;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .indicators button.active {
+      background-color: #333;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Славия</h1>
+    <p>Производство кондитерских изделий. Сладость в радость!</p>
+    <div class="login-icon" id="loginStatus">
+
+    </div>
+  </header>
+
+
+  <div id="container">
+    <div class="content">
+  <nav>
+    <a href="Index.html">Главная</a>
+    <a href="OComp.html">О компании</a>
+    <a href="Cat.html">Каталог</a>
+    <a href="Contact.html">Контакты</a>
+    <a href="otz.html">Отзывы</a>
+    <a href="news.html">Новости</a>
+  </nav>
+      <h2>Наша продукция:</h2>
+      <div class="carousel">
+        <div class="carousel-images">
+          <img src="img2.jpg" alt="Image 2">
+          <img src="img3.jpg" alt="Image 3">
+          <img src="img4.jpg" alt="Image 4">
+          <img src="img5.jpg" alt="Image 5">
+          <img src="img6.jpg" alt="Image 6">
+          <img src="img7.jpg" alt="Image 7">
+          <img src="img8.jpg" alt="Image 8">
+          <img src="img9.jpg" alt="Image 9">
+          <img src="img10.jpg" alt="Image 10">
+          <img src="img11.jpg" alt="Image 11">
+          <img src="img12.jpg" alt="Image 12">
+          <img src="img13.jpg" alt="Image 13">
+        </div>
+        <div class="carousel-buttons">
+          <button id="prev">&#10094;</button>
+          <button id="next">&#10095;</button>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <button data-index="0" class="active"></button>
+        <button data-index="1"></button>
+        <button data-index="2"></button>
+        <button data-index="3"></button>
+      </div>
+    </div>
+
+    <h3>Кондитерское производство Славия, г. Пенза.<br> Кондитерские изделия оптом от производителя по выгодным ценам!</h3>
+
+    <p align=justify>История печенья уходит своими корнями не просто в далекое прошлое, но даже во времена до нашей эры. Его рецепты хранились и передавались из поколения в поколение, оно пользовалось большой популярностью среди кочевников и путешественников, благодаря своей способности долго сохранять первозданное качество и отличный вкус. На сегодняшний день производство печенья имеет промышленные масштабы, в современном суетящемся мире нет времени на его изготовление в домашних условиях, да и это не имеет смысла, печенье всегда можно купить по пути с работы домой.</p>
+
+    <p>Суфле, безе, конфеты, домашнее печенье, зефир, сушки, пряники, баранки, песочное печенье, мармелад, сдобное с разными начинками, сахарное печенье, шоколадное и курабье – это лишь небольшой список того, что мы предлагаем купить оптом. Порадуйте своих покупателей, обновите ассортимент на своих витринах – вы будете рады эффекту, т.к. нашу продукцию знают и любят люди.</p>
+
+    <p>Наша компания успешно занимается производством печенья и кондитерских изделий и мы всегда рады вам предложить большой ассортимент и постоянно добавляемые новинки, на любой даже самый изысканный вкус. Продукция компании Славия это производство на современном оборудовании только из отборного сырья и высококачественных материалов, строго следуем рецептуре, соблюдаем все каноны и традиции, что бы у наших клиентов всегда было только лучшее. Кондитерские изделия от компании Славия – это качество и отличный вкус, в ассортименте нашей продукции вы найдете как традиционные так и необычные сладости.</p>
+
+    <p>Работать с нашей компанией легко и приятно и так как мы производители, то покупая кондитерские изделия оптом у нас – вы получаете отличные цены, и всегда свежую продукцию. Наш девиз Сладость – в радость, это не просто слова, если вы хотите купить оптом продукцию, которую знают и любят покупатели, продукцию, которая всегда пользуется спросом – свяжитесь с нами – мы всегда рады новым клиентам и новым друзьям.</p>
+    <br>
+
+    <footer class="footer">
+      <p>Кондитерское производство Славия, г. Пенза. Оптовая продажа по выгодным ценам!</p>
+    </footer>
+
+  <script>
+    function checkLoginStatus() {
+      const loggedUser = localStorage.getItem('loggedUser');
+
+      const loginStatusDiv = document.getElementById('loginStatus');
+      if (loggedUser) {
+        loginStatusDiv.innerHTML = `<a href="account.html">${loggedUser}</a>`;
+      } else {
+        loginStatusDiv.innerHTML = `<a href="login.html"><img src="Input.png" alt="Вход"></a>`;
+      }
+    }
+
+const images = document.querySelector('.carousel-images');
+      const indicators = document.querySelectorAll('.indicators button');
+      const totalSlides = Math.ceil(images.children.length / 3);
+      let currentIndex = 0;
+
+      document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? totalSlides - 1 : currentIndex - 1;
+        updateCarousel();
+      });
+
+      document.getElementById('next').addEventListener('click', () => {
+        currentIndex = (currentIndex === totalSlides - 1) ? 0 : currentIndex + 1;
+        updateCarousel();
+      });
+
+      indicators.forEach(indicator => {
+        indicator.addEventListener('click', (e) => {
+          currentIndex = parseInt(e.target.dataset.index);
+          updateCarousel();
+        });
+      });
+
+      function updateCarousel() {
+        images.style.transform = `translateX(-${currentIndex * 100}%)`;
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+
+    checkLoginStatus();
+  </script>
+</body>
+</html>
