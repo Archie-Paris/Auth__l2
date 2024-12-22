@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>Аккаунт</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .account-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="account-container">
+    <h2>Ваш аккаунт</h2>
+    <p id="userInfo"></p>
+    <button onclick="logout()">Выйти</button>
+  </div>
+
+  <script>
+    async function loadAccountInfo() {
+      const loggedUser = localStorage.getItem('loggedUser');
+
+      if (!loggedUser) {
+        alert('Вы не авторизованы');
+        window.location.href = 'Login.html';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/users/${loggedUser}`);
+        const user = await response.json();
+
+        if (response.ok) {
+          document.getElementById('userInfo').textContent = `Вы вошли как: ${user.login}`;
+        } else {
+          alert('Ошибка загрузки данных. Авторизуйтесь снова.');
+          window.location.href = 'Login.html';
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Ошибка сервера.');
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedUser');
+      alert('Вы вышли из аккаунта.');
+      window.location.href = 'index.html';
+    }
+
+    loadAccountInfo();
+  </script>
+</body>
+</html>

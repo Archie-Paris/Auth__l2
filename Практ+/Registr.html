@@ -1,0 +1,55 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="register-container">
+    <h2>Регистрация</h2>
+    <input type="text" id="newLogin" placeholder="Логин">
+    <input type="password" id="newPassword" placeholder="Пароль">
+    <input type="password" id="confirmPassword" placeholder="Подтвердите пароль">
+    <button onclick="register()">Зарегистрироваться</button>
+  </div>
+
+  <script>
+    async function register() {
+  const login = document.getElementById('newLogin').value.trim();
+  const password = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (!login || !password || !confirmPassword) {
+    alert('Пожалуйста, заполните все поля.');
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert('Пароли не совпадают.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ login, password })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(data.message);
+      window.location.href = 'index.html';
+    } else {
+      alert(`Ошибка: ${data.message}`);
+    }
+  } catch (error) {
+    alert('Ошибка при подключении к серверу.');
+    console.error(error);
+  }
+}
+
+  </script>
+</body>
+</html>
