@@ -11,72 +11,53 @@
       margin: 0;
       background-color: #f4f4f4;
     }
-
     .account-container {
       background: white;
       padding: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
-      width: 300px;
       text-align: center;
-    }
-
-    .account-container h2 {
-      color: #333;
-    }
-
-    .account-container button {
-      background-color: #c0392b;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-margin-top: 5px;
-    }
-
-    .account-container button:hover {
-      background-color: #880015;
     }
   </style>
 </head>
 <body>
   <div class="account-container">
     <h2>Ваш аккаунт</h2>
-<p id="registrationTime"></p>
-
     <p id="userInfo"></p>
-    <button onclick="logout()">Выйти из аккаунта</button>
-<button onclick="goToMain()">На главную</button>
+    <button onclick="logout()">Выйти</button>
   </div>
 
   <script>
-function loadAccountInfo() {
-  const loggedUser = localStorage.getItem('loggedUser');
-  if (loggedUser) {
-    const accounts = JSON.parse(localStorage.getItem('accounts')) || {};
-    const userInfo = accounts[loggedUser];
+    async function loadAccountInfo() {
+      const loggedUser = localStorage.getItem('loggedUser');
 
-    if (userInfo) {
-      document.getElementById('userInfo').textContent = `Вы вошли как: ${loggedUser}`;
-      document.getElementById('registrationTime').textContent = `Дата регистрации: ${userInfo.registrationTime}`;
+      if (!loggedUser) {
+        alert('Вы не авторизованы');
+        window.location.href = 'Login.html';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/users/${loggedUser}`);
+        const user = await response.json();
+
+        if (response.ok) {
+          document.getElementById('userInfo').textContent = `Вы вошли как: ${user.login}`;
+        } else {
+          alert('Ошибка загрузки данных. Авторизуйтесь снова.');
+          window.location.href = 'Login.html';
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Ошибка сервера.');
+      }
     }
-  } else {
-    alert('Вы не авторизованы');
-    window.location.href = 'Login.html';
-  }
-}
 
     function logout() {
       localStorage.removeItem('loggedUser');
-      alert('Вы вышли из аккаунта');
-      window.location.href = 'Index.html';
+      alert('Вы вышли из аккаунта.');
+      window.location.href = 'index.html';
     }
-function goToMain() {
-  window.location.href = 'Index.html';
-}
 
     loadAccountInfo();
   </script>

@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Главная</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #ffe6e1;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      color: #c0392b;
+      font-size: 36px;
+    }
+    .login-status {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .login-status a {
+      color: #c0392b;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать</h1>
+    <div class="login-status" id="loginStatus"></div>
+  </header>
+
+  <script>
+    async function checkLoginStatus() {
+      const loggedUser = localStorage.getItem('loggedUser');
+      const loginStatusDiv = document.getElementById('loginStatus');
+
+      if (loggedUser) {
+        loginStatusDiv.innerHTML = `<a href="account.html">${loggedUser}</a>`;
+      } else {
+        loginStatusDiv.innerHTML = `<a href="Login.html">Войти</a>`;
+      }
+    }
+
+    checkLoginStatus();
+  </script>
+</body>
+</html>
