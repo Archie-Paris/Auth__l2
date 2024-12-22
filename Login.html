@@ -86,13 +86,13 @@ margin-top: 5px;
       if (accounts[login] && accounts[login] === password) {
 localStorage.setItem('loggedUser', login);
         alert('Вход выполнен успешно!');
-        window.location.href = 'Index.html'; // Переход на главную страницу
+        window.location.href = 'index.html'; // Переход на главную страницу
       } else {
         document.getElementById('error').textContent = 'Неверный логин или пароль';
       }
     }
 function goToMain() {
-  window.location.href = 'Index.html';
+  window.location.href = 'index.html';
 }
 
   </script>
